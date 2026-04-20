@@ -1,0 +1,423 @@
+import Image from "next/image";
+import Link from "next/link";
+
+type LuteolinPageProps = {
+  searchParams?: Promise<{
+    from?: string;
+  }>;
+};
+
+export default async function LuteolinPage({
+  searchParams,
+}: LuteolinPageProps) {
+  const resolvedSearchParams = searchParams ? await searchParams : {};
+  const from = resolvedSearchParams?.from;
+
+  let backHref = "/";
+  let backLabel = "← Back to library home";
+
+  if (from === "sleep") {
+    backHref = "/sleep";
+    backLabel = "← Back to Sleep";
+  } else if (from === "behavior") {
+    backHref = "/behavior";
+    backLabel = "← Back to Behavior";
+  } else if (from === "language") {
+    backHref = "/language";
+    backLabel = "← Back to Language";
+  } else if (from === "focus") {
+    backHref = "/focus";
+    backLabel = "← Back to Focus";
+  } else if (from === "sensory") {
+    backHref = "/sensory";
+    backLabel = "← Back to Sensory Regulation";
+  }
+
+  const categories = [
+    {
+      title: "Mast Cell / Histamine-Linked Support",
+      description:
+        "This category is most relevant when luteolin is being considered in relation to mast-cell-related signaling, histamine-linked reactivity, and broader sensory or behavioral instability within the Precision Neurobiology™ framework.",
+      forms: ["Luteolin", "Luteolin-based flavonoid blends"],
+      brands: [
+        "NeuroProtek LP",
+        "Algonot BrainGain",
+        "Pure Lut by Algonot",
+      ],
+    },
+    {
+      title: "Neuroinflammatory / Immune-Modulating Support",
+      description:
+        "This category is more relevant when the goal is supporting broader neuroinflammatory regulation and immune-modulating tone, particularly where sensory intolerance and inflammatory signaling appear to overlap.",
+      forms: ["Luteolin Capsules", "Luteolin + Quercetin formulations"],
+      brands: [
+        "NeuroProtek LP",
+        "Algonot formulations",
+        "Selected luteolin-quercetin blends",
+      ],
+    },
+    {
+      title: "General Flavonoid Support / Less Precision-Oriented Use",
+      description:
+        "These uses are broader and less specifically targeted. Within the Precision Neurobiology™ framework, luteolin is most useful when selected for a clear mast-cell, histamine, or neuroinflammatory rationale rather than as a general plant flavonoid.",
+      forms: [
+        "General luteolin supplements",
+        "Mixed flavonoid blends containing luteolin",
+      ],
+      brands: ["Mixed retail luteolin formulations"],
+    },
+  ];
+
+  return (
+    <main
+      style={{
+        minHeight: "100vh",
+        background:
+          "linear-gradient(180deg, #f4f7f5 0%, #eef3f0 45%, #ffffff 100%)",
+        fontFamily: "Arial, Helvetica, sans-serif",
+        color: "#14251f",
+      }}
+    >
+      <section
+        style={{
+          borderBottom: "1px solid #d9e3de",
+          background:
+            "linear-gradient(135deg, #ffffff 0%, #f4f7f5 60%, #f2edff 100%)",
+        }}
+      >
+        <div
+          style={{
+            maxWidth: 1100,
+            margin: "0 auto",
+            padding: "34px 24px 48px 24px",
+          }}
+        >
+          <div style={{ maxWidth: 780 }}>
+            <div style={{ marginBottom: 10 }}>
+              <Link
+                href="/"
+                style={{ display: "inline-block", textDecoration: "none" }}
+              >
+                <Image
+                  src="/pnb-logo.png"
+                  alt="Precision Neurobiology"
+                  width={320}
+                  height={82}
+                  priority
+                  style={{
+                    width: "100%",
+                    maxWidth: 240,
+                    height: "auto",
+                    display: "block",
+                  }}
+                />
+              </Link>
+            </div>
+
+            <div
+              style={{
+                display: "inline-flex",
+                border: "1px solid #d9e3de",
+                background: "rgba(255,255,255,0.9)",
+                borderRadius: 999,
+                padding: "6px 10px",
+                fontSize: 12,
+                fontWeight: 700,
+                color: "#1b5e3b",
+                marginBottom: 12,
+              }}
+            >
+              Luteolin
+            </div>
+
+            <h1
+              style={{
+                margin: 0,
+                fontSize: "clamp(34px, 5vw, 52px)",
+                lineHeight: 1.06,
+                fontWeight: 700,
+                letterSpacing: "-0.03em",
+                color: "#1b5e3b",
+              }}
+            >
+              Luteolin within the Precision Neurobiology™ framework
+            </h1>
+
+            <p
+              style={{
+                marginTop: 18,
+                fontSize: 18,
+                lineHeight: 1.75,
+                color: "#5c6f68",
+                maxWidth: 760,
+              }}
+            >
+              Luteolin is not viewed simply as a general antioxidant flavonoid
+              within the Precision Neurobiology™ model. Its role depends on
+              whether the primary goal is addressing mast-cell-related signaling,
+              histamine-linked reactivity, neuroinflammatory tone, or broader
+              immune-modulating support in cases with sensory and behavioral
+              instability.
+            </p>
+
+            <div
+              style={{
+                marginTop: 20,
+                background: "#ffffff",
+                border: "1px solid #d9e3de",
+                borderRadius: 18,
+                padding: 18,
+              }}
+            >
+              <p
+                style={{
+                  margin: 0,
+                  fontSize: 13,
+                  lineHeight: 1.8,
+                  color: "#5c6f68",
+                }}
+              >
+                This page is educational in nature. It is designed to help
+                parents understand how luteolin is categorized within the
+                Precision Neurobiology™ framework and does not provide
+                individualized recommendations.
+              </p>
+            </div>
+
+            <div
+              style={{
+                marginTop: 16,
+                height: 3,
+                width: "100%",
+                maxWidth: 340,
+                borderRadius: 999,
+                background:
+                  "linear-gradient(90deg, #1b5e3b 0%, #5b3fa3 100%)",
+              }}
+            />
+          </div>
+        </div>
+      </section>
+
+      <section
+        style={{
+          maxWidth: 1100,
+          margin: "0 auto",
+          padding: "42px 24px 24px 24px",
+        }}
+      >
+        <div
+          style={{
+            background: "#ffffff",
+            border: "1px solid #d9e3de",
+            borderRadius: 22,
+            padding: 24,
+          }}
+        >
+          <h2
+            style={{
+              margin: 0,
+              fontSize: 24,
+              fontWeight: 700,
+              color: "#1b5e3b",
+            }}
+          >
+            How luteolin is differentiated in the Precision Neurobiology™ framework
+          </h2>
+
+          <p
+            style={{
+              marginTop: 14,
+              marginBottom: 0,
+              fontSize: 15,
+              lineHeight: 1.8,
+              color: "#5c6f68",
+              maxWidth: 820,
+            }}
+          >
+            Rather than ranking luteolin universally, the Precision
+            Neurobiology™ model first considers the functional and biologic
+            reason for its use. It then looks at whether luteolin is being
+            discussed primarily for mast-cell-related signaling, histamine-linked
+            reactivity, or broader neuroimmune and sensory-regulatory support.
+          </p>
+        </div>
+      </section>
+
+      <section
+        style={{
+          maxWidth: 1100,
+          margin: "0 auto",
+          padding: "8px 24px 64px 24px",
+        }}
+      >
+        <div style={{ maxWidth: 760, marginBottom: 24 }}>
+          <h2
+            style={{
+              margin: 0,
+              fontSize: 24,
+              fontWeight: 700,
+              color: "#1b5e3b",
+            }}
+          >
+            Functional categories within the framework
+          </h2>
+
+          <p
+            style={{
+              marginTop: 12,
+              fontSize: 15,
+              lineHeight: 1.75,
+              color: "#5c6f68",
+            }}
+          >
+            These categories reflect how luteolin may be viewed differently
+            depending on the intended biologic and functional target.
+          </p>
+        </div>
+
+        <div style={{ display: "grid", gap: 20 }}>
+          {categories.map((category) => (
+            <div
+              key={category.title}
+              style={{
+                background: "#ffffff",
+                border: "1px solid #d9e3de",
+                borderRadius: 22,
+                padding: 22,
+              }}
+            >
+              <h3
+                style={{
+                  marginTop: 0,
+                  marginBottom: 10,
+                  fontSize: 22,
+                  fontWeight: 700,
+                  color: "#1b5e3b",
+                }}
+              >
+                {category.title}
+              </h3>
+
+              <p
+                style={{
+                  marginTop: 0,
+                  marginBottom: 18,
+                  fontSize: 15,
+                  lineHeight: 1.8,
+                  color: "#5c6f68",
+                  maxWidth: 860,
+                }}
+              >
+                {category.description}
+              </p>
+
+              <div
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "minmax(220px, 320px) minmax(0, 1fr)",
+                  gap: 18,
+                }}
+              >
+                <div
+                  style={{
+                    border: "1px solid #d9e3de",
+                    borderRadius: 16,
+                    background: "#f9fbfa",
+                    padding: 16,
+                  }}
+                >
+                  <div
+                    style={{
+                      fontSize: 13,
+                      fontWeight: 700,
+                      color: "#5b3fa3",
+                      textTransform: "uppercase",
+                      letterSpacing: "0.08em",
+                      marginBottom: 10,
+                    }}
+                  >
+                    Forms
+                  </div>
+
+                  <div style={{ display: "grid", gap: 8 }}>
+                    {category.forms.map((form) => (
+                      <div
+                        key={form}
+                        style={{
+                          border: "1px solid #d9e3de",
+                          borderRadius: 12,
+                          background: "#ffffff",
+                          padding: "10px 12px",
+                          fontSize: 14,
+                          fontWeight: 600,
+                          color: "#1b5e3b",
+                        }}
+                      >
+                        {form}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div
+                  style={{
+                    border: "1px solid #d9e3de",
+                    borderRadius: 16,
+                    background: "#ffffff",
+                    padding: 16,
+                  }}
+                >
+                  <div
+                    style={{
+                      fontSize: 13,
+                      fontWeight: 700,
+                      color: "#5b3fa3",
+                      textTransform: "uppercase",
+                      letterSpacing: "0.08em",
+                      marginBottom: 10,
+                    }}
+                  >
+                    Example quality brands
+                  </div>
+
+                  <div style={{ display: "grid", gap: 8 }}>
+                    {category.brands.map((brand) => (
+                      <div
+                        key={brand}
+                        style={{
+                          borderBottom: "1px solid #eef2ef",
+                          paddingBottom: 8,
+                          fontSize: 14,
+                          color: "#374151",
+                        }}
+                      >
+                        {brand}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div style={{ marginTop: 28 }}>
+          <Link
+            href={backHref}
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              textDecoration: "none",
+              color: "#1b5e3b",
+              fontSize: 14,
+              fontWeight: 700,
+            }}
+          >
+            {backLabel}
+          </Link>
+        </div>
+      </section>
+    </main>
+  );
+}
